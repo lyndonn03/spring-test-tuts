@@ -12,6 +12,8 @@ services:
             - db
         environment: 
             - SPRING_PROFILES_ACTIVE=dev
+        ports: 
+            - 8080:8080
     
     db:
         image: postgres:13.3-alpine

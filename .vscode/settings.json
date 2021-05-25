@@ -3,5 +3,6 @@
         "env": {
             "SPRING_PROFILES_ACTIVE": "test"
         }
-    }
+    },
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
