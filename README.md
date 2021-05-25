@@ -12,8 +12,11 @@ Spring boot's profile can be change in two different ways (as far as I know):
 
 1. using `application.properties` via `spring.profiles.active={dev,test,prod (just choose one)}`.
 2. using device environment via `SPRING_PROFILES_ACTIVE={dev,test,prod}`
-3. for test env, add `application-test.properties` in `src/main/resources` and add your application properties for test env here.
-4. similar to test env, add `application-dev.properties` in `src/main/resources` for dev env.
+
+
+IMPORTANT NOTES (Please don't skip these or you will spend hours to debug why you can't run integration tests using testcontainers): 
+1. for test env, add `application-test.properties` in `src/main/resources` and add your application properties for test env here.
+2. similar to test env, add `application-dev.properties` in `src/main/resources` for dev env.
 
 ---
 
