@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,5 +22,10 @@ public class Song {
     private String name;
 
     private String artist;
+
+    @PrePersist
+    public void setId() {
+        this.id = UUID.randomUUID();
+    }
     
 }
