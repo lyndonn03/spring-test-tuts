@@ -1,0 +1,26 @@
+version: '3.1'
+
+services: 
+    backend:
+        image: maven:3.8.1-jdk-11
+        command: mvn spring-boot:run
+        volumes: 
+            - ./backend:/usr/src/backend
+            - maven-test-repo:/root/.m2
+        working_dir: /usr/src/backend
+        depends_on:
+            - db
+        environment: 
+            - SPRING_PROFILES_ACTIVE=dev
+    
+    db:
+        image: postgres:13.3-alpine
+        restart: always
+        environment:
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: user
+            POSTGRES_DB: springtest
+    
+
+volumes: 
+    maven-test-repo:

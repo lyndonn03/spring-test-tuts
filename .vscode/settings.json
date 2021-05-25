@@ -1,0 +1,7 @@
+{
+    "java.test.config": {
+        "env": {
+            "SPRING_PROFILES_ACTIVE": "test"
+        }
+    }
+}
