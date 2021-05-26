@@ -19,7 +19,7 @@ public class Song {
     @Id
     private UUID id;
 
-    private String name;
+    private String title;
 
     private String artist;
 
