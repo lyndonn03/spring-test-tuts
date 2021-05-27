@@ -17,5 +17,5 @@ public interface LibraryService {
     public void deleteLibrary(UUID id) throws LibraryNotFoundException;
 
     public Library createLibrary(Library library);
-    
+
 }

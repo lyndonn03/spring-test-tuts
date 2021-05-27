@@ -12,6 +12,7 @@ import java.util.UUID;
 import com.lpamintuan.backend.exceptions.LibraryNotFoundException;
 import com.lpamintuan.backend.exceptions.UndesiredSQLManipulationException;
 import com.lpamintuan.backend.models.Library;
+import com.lpamintuan.backend.models.LibraryContent;
 import com.lpamintuan.backend.repositories.LibraryRepository;
 import com.lpamintuan.backend.services.LibraryService;
 
@@ -47,6 +48,18 @@ public class LibraryServiceImplTest {
         Library actualResult = libraryService.createLibrary(expectedResult);
 
         Assertions.assertThat(actualResult).isEqualToComparingFieldByFieldRecursively(expectedResult);
+    }
+
+    @Test
+    public void createLibrary_shouldPass_ifItReturnsNewLyCreatedObject_withLibraryContents() {
+        Library expectedResult = new Library(UUID.randomUUID(), "TEST LIBRARY #1", 
+            Arrays.asList(new LibraryContent())
+        );
+        Mockito.when(libraryRepository.save(any(Library.class))).thenReturn(expectedResult);
+
+        Library actualResult = libraryService.createLibrary(expectedResult);
+
+        Assertions.assertThat(actualResult.getContents().size()).isEqualTo(1);
     }
 
 

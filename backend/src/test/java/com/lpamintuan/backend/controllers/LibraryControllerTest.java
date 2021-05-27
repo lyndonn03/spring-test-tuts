@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lpamintuan.backend.exceptions.LibraryNotFoundException;
 import com.lpamintuan.backend.models.Library;
+import com.lpamintuan.backend.models.LibraryContent;
 import com.lpamintuan.backend.services.LibraryService;
 
 import org.junit.jupiter.api.Test;
@@ -79,6 +80,25 @@ public class LibraryControllerTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.name").value("TEST LIBRARY"));
+
+    }
+
+    @Test
+    public void getLibrary_shouldPass_ifItWillNotIncludeLibraryContents() throws Exception {
+
+        Library expectedResult = new Library(null, "TEST LIBRARY",
+            Arrays.asList(
+                new LibraryContent()
+            )
+        );
+
+        Mockito.when(libraryService.getLibraryById(any(UUID.class))).thenReturn(expectedResult);
+
+        mockMvc.perform(get("/libraries/{id}", UUID.randomUUID()))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$.name").value("TEST LIBRARY"))
+            .andExpect(jsonPath("$.contents").doesNotExist());
 
     }
 

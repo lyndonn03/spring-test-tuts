@@ -16,5 +16,9 @@ public interface LibraryRepository extends JpaRepository<Library, UUID> {
     @Modifying
     @Query(value = "UPDATE library SET name = :name WHERE id = :id", nativeQuery=true)
     int updateLibraryById(UUID id, String name);
+
+    static boolean existsByIdLibraryId(UUID libraryId) {
+        return false;
+    }
     
 }

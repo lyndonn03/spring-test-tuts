@@ -5,12 +5,14 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "song")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
