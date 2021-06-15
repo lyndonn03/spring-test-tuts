@@ -1,6 +1,13 @@
-# spring-test-tuts
-Spring Test Tutorial
+# TL;DR
 
+A project that focuses on Spring Boot Test with `JUnit5` and `Assertions` Libraries.
+
+
+<br />
+
+# Why did I do this?
+
+To practice how to create backend applications using Spring Framework with Spring Boot again.
 
 <br />
 <br />
